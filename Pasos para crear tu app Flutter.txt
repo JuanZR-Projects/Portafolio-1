@@ -1,0 +1,8 @@
+Pasos para crear tu app Flutter
+1. Crea el proyecto (puedes copiar y pegar en la terminal):
+
+flutter create control_presion
+cd control_presion
+code . (Esto abrirá el proyecto en Visual Studio Code)
+
+2. Reemplaza el contenido de lib/main.dart con tu código.

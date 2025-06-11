@@ -21,10 +21,10 @@ class PresionForm extends StatefulWidget {
   const PresionForm({super.key});
 
   @override
-  _PresionFormState createState() => _PresionFormState();
+  PresionFormState createState() => PresionFormState(); //Si, por ejemplo, "_PresionFormState" la "_" sirve para indicar si un tipo es privado en Dart.
 }
 
-class _PresionFormState extends State<PresionForm> {
+class PresionFormState extends State<PresionForm> {
   final _systolicController = TextEditingController();
   final _diastolicController = TextEditingController();
   final _pulseController = TextEditingController();
@@ -43,6 +43,23 @@ class _PresionFormState extends State<PresionForm> {
     if (sys == null || dia == null || pulso == null) {
       setState(() {
         _diagnostico = 'Por favor, ingrese todos los valores correctamente.';
+        _colorDiagnostico = Colors.grey[300]!;
+      });
+      return;
+    }
+
+    if (sys < 1 || dia < 1 || pulso < 1) {
+      setState(() {
+        _diagnostico = 'Por favor, no ingrese valores negativos.';
+        _colorDiagnostico = Colors.grey[300]!;
+      });
+      return;
+    }
+
+    if (sys > 200 || dia > 200 || pulso > 200) {
+      setState(() {
+        _diagnostico =
+            'Por favor, no ingrese valores más allá de los parametros ordinarios.';
         _colorDiagnostico = Colors.grey[300]!;
       });
       return;
@@ -139,7 +156,7 @@ class _PresionFormState extends State<PresionForm> {
   }
 }
 
-//Ejecutar con "flutter run"
+//Ejecutar con "flutter run" (entrar con el comando "cd" a la carpeta donde se ejecutó el comando "flutter create")
 
 // Edita el archivo: android/app/src/main/AndroidManifest.xml
 
